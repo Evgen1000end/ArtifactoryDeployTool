@@ -7,10 +7,10 @@ import java.io.File;
 
 public class SimpleArtefactoryPublisher {
 
-    public static void main(String[] args) {
-
-        ArtifactoryAPI artifactoryAPI = new ArtifactoryAPIImpl(new DefautParameterBuilder());
-        artifactoryAPI.importFrom(new File("C:\\NEW_WORKSPACE\\CZML.zip"));
-
-    }
+//    public static void main(String[] args) {
+//
+//        ArtifactoryAPI artifactoryAPI = new ArtifactoryAPIImpl(new DefautParameterBuilder());
+//        artifactoryAPI.importFrom(new File("C:\\NEW_WORKSPACE\\CZML.zip"));
+//
+//    }
 }

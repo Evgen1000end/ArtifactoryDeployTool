@@ -8,11 +8,29 @@ task wrapper(type: Wrapper) {
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
 
+jar {
+    //mainClassName = 'ru.demkin.simplepublisher.ArtefactoryDeployToolCLI'
+    manifest {
+        attributes 'Main-Class': 'ru.demkin.simplepublisher.ArtefactoryDeployToolCLI'
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    baseName = 'adt'
+
+}
+
+
+//mainClassName = 'ru.demkin.simplepublisher.ArtefactoryDeployToolCLI'
 repositories {
     mavenCentral()
 }
+
+
 
 dependencies {
     testCompile("org.testng:testng:6.9.6")
@@ -22,6 +40,8 @@ dependencies {
     compile 'org.zeroturnaround:zt-zip:1.9'
     compile 'com.fasterxml.jackson.core:jackson-core:2.7.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.7.0'
+    compile 'commons-cli:commons-cli:1.2'
+
 
 
 
