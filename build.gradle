@@ -2,18 +2,21 @@ group 'ArtiDT'
 version '0.0.1'
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '2.2'
-  distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+    gradleVersion = '2.5'
+    distributionUrl = "gradle-2.5-bin.zip"
 }
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.7
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile("org.testng:testng:6.9.6")
+    compile('com.sun.jersey:jersey-client:1.9')
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.slf4j:slf4j-api:1.7.5'
 }
