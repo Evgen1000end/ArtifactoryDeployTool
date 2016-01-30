@@ -19,4 +19,6 @@ dependencies {
     compile('com.sun.jersey:jersey-client:1.9')
     compile 'commons-io:commons-io:2.4'
     compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'org.zeroturnaround:zt-zip:1.9'
+
 }
