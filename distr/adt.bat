@@ -1,0 +1,1 @@
+java -jar adt-0.0.1.jar %*
