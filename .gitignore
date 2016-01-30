@@ -2,3 +2,4 @@
 *.iml
 .gradle
 build
+jersey-artifactory-client-master
