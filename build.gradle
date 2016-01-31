@@ -32,14 +32,9 @@ dependencies {
     testCompile("org.testng:testng:6.9.6")
     compile('com.sun.jersey:jersey-client:1.9')
     compile 'commons-io:commons-io:2.4'
-    compile 'org.slf4j:slf4j-api:1.7.5'
     compile 'org.zeroturnaround:zt-zip:1.9'
     compile 'com.fasterxml.jackson.core:jackson-core:2.7.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.7.0'
     compile 'commons-cli:commons-cli:1.2'
-
-
-
-
-
+    compile 'org.slf4j:slf4j-simple:1.6.4'
 }

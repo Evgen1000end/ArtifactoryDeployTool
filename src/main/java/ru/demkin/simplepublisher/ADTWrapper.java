@@ -3,15 +3,11 @@ package ru.demkin.simplepublisher;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.jfrog.artifactory.ArtifactoryUtilsException;
 import org.jfrog.artifactory.api.ADTConfig;
 import org.jfrog.artifactory.api.StatusCode;
 import org.zeroturnaround.zip.ZipUtil;
-
 import java.io.File;
-import java.io.IOException;
 
 public class ADTWrapper {
 
@@ -50,6 +46,8 @@ public class ADTWrapper {
 
     public void importFrom(){
 
+        System.out.println("Prepare to unload... ");
+
         client.addFilter(
                 new com.sun.jersey.api.client.filter.HTTPBasicAuthFilter
                         (this.config.getLogin(), this.config.getPassword()));
@@ -63,10 +61,12 @@ public class ADTWrapper {
       //  String pathToZip = config.getDisk_path()+"\\"+
       //          config.getArchive_name()+".zip";
 
-        String pathToZip = "C:\\PROJECTS\\"+  config.getArchive_name()+".zip";
+        String pathToZip = "C:\\PROJECTS\\"+  config.getArchive_name()+
+                "-"+config.getVersion()+ ".zip";
 
         ZipUtil.pack(new File(config.getDisk_path()), new File(pathToZip));
 
+        System.out.println("Archive created successful!");
 
         final ClientResponse clientResponse =  webResource.put(ClientResponse.class, new File(pathToZip));
 
@@ -75,6 +75,8 @@ public class ADTWrapper {
         if(status != StatusCode.CREATED.getCode()){
             throw new ArtifactoryUtilsException(); //status,this.params
         }
+
+        System.out.println("Artifactory upload done!");
     }
 
     public void delete(){

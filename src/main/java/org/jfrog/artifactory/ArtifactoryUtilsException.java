@@ -1,9 +1,9 @@
 package org.jfrog.artifactory;
 
+import org.jfrog.artifactory.api.ADTConfig;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import org.jfrog.artifactory.param.Parameter;
 
 public class ArtifactoryUtilsException extends RuntimeException {	
 	
@@ -25,12 +25,12 @@ public class ArtifactoryUtilsException extends RuntimeException {
 		errorMessage.put(0, "An ArtifactoryResourceWeb object can't be null. Please create one to make it works.");
 	}
 
-	public ArtifactoryUtilsException(final int pStatus, final Parameter pResource) {
+	public ArtifactoryUtilsException(final int pStatus, final ADTConfig pResource) {
 
 		status = pStatus;
-		errorMessage.put(401, "You did not have the rights to use it with this login : "+pResource.getUsername()+" and password :"+pResource.getPassword());
-		errorMessage.put(403, "The following repository does not exist : "+pResource.getRepository());
-		errorMessage.put(405, "Wrong artifactory home url : "+pResource.getHomeUrl());
+		errorMessage.put(401, "You did not have the rights to use it with this login : "+pResource.getLogin()+" and password :"+pResource.getPassword());
+		errorMessage.put(403, "The following repository does not exist : "+pResource.getRepository_name());
+		errorMessage.put(405, "Wrong artifactory home url : "+pResource.getServer_ip());
 
 	}
 	

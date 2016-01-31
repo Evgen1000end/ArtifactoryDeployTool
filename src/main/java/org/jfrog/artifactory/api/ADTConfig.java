@@ -7,6 +7,16 @@ public class ADTConfig {
 
     private String archive_name;
 
+    private String version;
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     public String getArchive_name() {
         return archive_name;
     }
@@ -86,8 +96,8 @@ public class ADTConfig {
     }
 
     public String getWebResourcePath(){
-        return this.server_ip+"/artifactory/"+this.repository_name+"/"+this.repo_folder+"/"+this.archive_name+".zip";
+        return server_ip+"/artifactory/"+repository_name+
+                "/"+repo_folder+"/"+archive_name+"-"+version+".zip";
     }
-
 }
 
