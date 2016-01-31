@@ -1,6 +1,10 @@
 package ru.demkin.simplepublisher;
 
 import org.apache.commons.cli.*;
+import org.jfrog.artifactory.api.ADTConfig;
+import org.jfrog.artifactory.api.ADTConfigBuilder;
+import org.jfrog.artifactory.api.ArtifactoryAPI;
+import org.jfrog.artifactory.api.impl.ArtifactoryAPIImpl;
 
 /**
  * Created by evgen1000end on 30.01.2016.
@@ -19,21 +23,33 @@ public class ArtefactoryDeployToolCLI {
         posixOptions.addOption(option);
 
 
-
         CommandLineParser cmdLinePosixParser = new PosixParser();
         try {
 
-            System.out.println("here");
             CommandLine commandLine = cmdLinePosixParser.parse(posixOptions, args);
 
             if (commandLine.hasOption("p")) {
-                //String[] arguments = commandLine.getOptionValues("p");
-                System.out.println("We try to Login with: ");
+                System.out.println(" Publish artefact its about to begin!");
+
+                String path =System.getProperty("user.dir")+"\\"+ADTDefaults.DEFAULT_BUILD_NAME;
+               // String path = "C:\\PROJECTS\\ArtifactoryDeployTool\\Bin\\"+ADTDefaults.DEFAULT_BUILD_NAME;
+
+                ADTConfig config = new ADTConfigBuilder().build(path);
+
+               // ArtifactoryAPI artifactoryAPI = new ArtifactoryAPIImpl(new DefautParameterBuilder());
+
+                ADTWrapper adtWrapper = new ADTWrapper(config);
+
+                adtWrapper.importFrom();
+
+            }
+
+            else
+            {
+                System.out.println("Please, input commands.");
             }
 
         } catch (ParseException e) {
-
-            System.out.println("hello!");
             e.printStackTrace();
 
         }

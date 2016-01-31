@@ -24,13 +24,9 @@ jar {
 
 }
 
-
-//mainClassName = 'ru.demkin.simplepublisher.ArtefactoryDeployToolCLI'
 repositories {
     mavenCentral()
 }
-
-
 
 dependencies {
     testCompile("org.testng:testng:6.9.6")
